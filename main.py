@@ -1,24 +1,44 @@
 def fib_recursive(n, counts):
+  if n<=0:
+    return 0
+  elif n==1 :
+    return 1
+  else:
+    counts[n] += 1
+    return fib_recursive(n-1, counts) + fib_recursive(n-2, counts)
+  
     """
     Return the nth Fibonacci number. 
     counts is a list of n+1 elements, where counts[i] is incremented
     each time fib_recursive(i, counts) is called.
     """    
-    counts[n] += 1
     ###TODO
     pass
     
 
     
 def fib_top_down(n, fibs):
-    ###TODO
+    if fibs[n]!=-1:
+      return fibs[n]
+    if n<=0:
+      fibs[0]=0
+      return fibs[0]
+    elif n==1 :
+      fibs[1]=1
+      return fibs[1]
+    else:
+      return fib_recursive(n-1, fibs) + fib_recursive(n-2, fibs)
     pass
 
 
 def fib_bottom_up(n):
-    ###TODO
-    pass
-
+  if n<=1:
+    return n
+  fibs=[0]*(n+1)
+  fibs[1]=1
+  for i in range(2,n+1):
+    fibs[i]=fibs[i-1]+fibs[i-2]
+  return fibs[n]
 
 
 
